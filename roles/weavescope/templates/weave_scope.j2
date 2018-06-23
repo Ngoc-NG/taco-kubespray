@@ -22,7 +22,7 @@ items:
           }
       labels:
         name: weave-scope
-      namespace: weave
+      namespace: {{ system_namespace }}
   - apiVersion: rbac.authorization.k8s.io/v1beta1
     kind: ClusterRole
     metadata:
@@ -114,7 +114,7 @@ items:
     subjects:
       - kind: ServiceAccount
         name: weave-scope
-        namespace: weave
+        namespace: {{ system_namespace }}
   - apiVersion: apps/v1beta1
     kind: Deployment
     metadata:
@@ -133,7 +133,7 @@ items:
         app: weave-scope
         weave-cloud-component: scope
         weave-scope-component: app
-      namespace: weave
+      namespace: {{ system_namespace }}
     spec:
       replicas: 1
       revisionHistoryLimit: 2
@@ -175,7 +175,7 @@ items:
         app: weave-scope
         weave-cloud-component: scope
         weave-scope-component: app
-      namespace: weave
+      namespace: {{ system_namespace }}
     spec:
       ports:
         - name: app
@@ -205,7 +205,7 @@ items:
         app: weave-scope
         weave-cloud-component: scope
         weave-scope-component: agent
-      namespace: weave
+      namespace: {{ system_namespace }}
     spec:
       minReadySeconds: 5
       template:
